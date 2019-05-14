@@ -12,7 +12,7 @@ SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario_grupo`
 (
-    `id`        INT         NOT NULL,
+    `id`        INT         NOT NULL AUTO_INCREMENT,
     `descricao` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`)
 )
@@ -24,12 +24,12 @@ CREATE TABLE IF NOT EXISTS `usuario_grupo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario`
 (
-    `id`               INT          NOT NULL,
+    `id`               INT          NOT NULL AUTO_INCREMENT,
     `login`            VARCHAR(50)  NOT NULL,
     `nome`             VARCHAR(100) NOT NULL,
     `senha`            VARCHAR(100) NULL,
     `usuario_grupo_id` INT          NOT NULL,
-    PRIMARY KEY (`id`, `usuario_grupo_id`),
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_usuario_usuario_grupo`
         FOREIGN KEY (`usuario_grupo_id`)
             REFERENCES `usuario_grupo` (`id`)
@@ -48,7 +48,7 @@ CREATE UNIQUE INDEX `login_UNIQUE` ON `usuario` (`login` ASC);
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `produto`
 (
-    `id`                 INT            NOT NULL,
+    `id`                 INT            NOT NULL AUTO_INCREMENT,
     `cod_barras`         VARCHAR(14)    NOT NULL,
     `descricao`          VARCHAR(100)   NOT NULL,
     `marca`              VARCHAR(50)    NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `produto`
     `estoque`            DECIMAL(15, 5) NOT NULL DEFAULT 0,
     `custo`              DECIMAL(15, 5) NOT NULL DEFAULT 0.0,
     `status`             VARCHAR(1)     NOT NULL DEFAULT 'N',
-    PRIMARY KEY (`id`, `usuario_cadastro`),
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_produto_usuario1`
         FOREIGN KEY (`usuario_cadastro`)
             REFERENCES `usuario` (`id`)
@@ -77,10 +77,11 @@ CREATE INDEX `fk_produto_usuario1_idx` ON `produto` (`usuario_cadastro` ASC);
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `produto_usuario_alteracao`
 (
+    id                    INT      NOT NULL AUTO_INCREMENT,
     `produto_id`          INT      NOT NULL,
     `usuario_id`          INT      NOT NULL,
     `data_hora_alteracao` DATETIME NOT NULL,
-    PRIMARY KEY (`produto_id`, `usuario_id`),
+    PRIMARY KEY (id),
     CONSTRAINT `fk_produto_has_usuario_produto1`
         FOREIGN KEY (`produto_id`)
             REFERENCES `produto` (`id`)
@@ -104,7 +105,7 @@ CREATE INDEX `fk_produto_has_usuario_produto1_idx` ON `produto_usuario_alteracao
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cliente`
 (
-    `id`     INT          NOT NULL,
+    `id`     INT          NOT NULL AUTO_INCREMENT,
     `nome`   VARCHAR(100) NOT NULL,
     `cpf`    VARCHAR(11)  NOT NULL,
     `rg`     VARCHAR(45)  NULL,
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fornecedor`
 (
-    `id`            INT          NOT NULL,
+    `id`            INT          NOT NULL AUTO_INCREMENT,
     `razao_social`  VARCHAR(100) NOT NULL,
     `nome_fantasia` VARCHAR(45)  NOT NULL,
     `cnpj`          VARCHAR(14)  NOT NULL,
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `fornecedor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `endereco`
 (
-    `id`            INT         NOT NULL,
+    `id`            INT         NOT NULL AUTO_INCREMENT,
     `endereco`      VARCHAR(50) NULL,
     `bairro`        VARCHAR(50) NULL,
     `numero`        VARCHAR(10) NULL,
@@ -165,7 +166,7 @@ CREATE INDEX `fk_endereco_fornecedor1_idx` ON `endereco` (`fornecedor_id` ASC);
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `telefone`
 (
-    `id`            INT         NOT NULL,
+    `id`            INT         NOT NULL AUTO_INCREMENT,
     `tipo`          VARCHAR(45) NULL,
     `numero`        VARCHAR(45) NULL,
     `fornecedor_id` INT         NULL,
@@ -194,10 +195,11 @@ CREATE INDEX `fk_telefone_cliente1_idx` ON `telefone` (`cliente_id` ASC);
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cliente_usuario_alteracao`
 (
+    id                    INT      NOT NULL AUTO_INCREMENT,
     `usuario_id`          INT      NOT NULL,
     `cliente_id`          INT      NOT NULL,
     `data_hora_alteracao` DATETIME NOT NULL,
-    PRIMARY KEY (`usuario_id`, `cliente_id`),
+    PRIMARY KEY (`id`),
     CONSTRAINT `fk_usuario_has_cliente_usuario1`
         FOREIGN KEY (`usuario_id`)
             REFERENCES `usuario` (`id`)
@@ -221,18 +223,19 @@ CREATE INDEX `fk_usuario_has_cliente_usuario1_idx` ON `cliente_usuario_alteracao
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fornecedor_usuario_alteracao`
 (
+    id                         INT NOT NULL AUTO_INCREMENT,
     `fornecedor_id`            INT NOT NULL,
     `usuario_id`               INT NOT NULL,
     `usuario_usuario_grupo_id` INT NOT NULL,
-    PRIMARY KEY (`fornecedor_id`, `usuario_id`, `usuario_usuario_grupo_id`),
+    PRIMARY KEY (id),
     CONSTRAINT `fk_fornecedor_has_usuario_fornecedor1`
         FOREIGN KEY (`fornecedor_id`)
             REFERENCES `fornecedor` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION,
     CONSTRAINT `fk_fornecedor_has_usuario_usuario1`
-        FOREIGN KEY (`usuario_id`, `usuario_usuario_grupo_id`)
-            REFERENCES `usuario` (`id`, `usuario_grupo_id`)
+        FOREIGN KEY (`usuario_id`)
+            REFERENCES `usuario` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
@@ -248,7 +251,7 @@ CREATE INDEX `fk_fornecedor_has_usuario_fornecedor1_idx` ON `fornecedor_usuario_
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mov_estoque`
 (
-    `id`            INT            NOT NULL,
+    `id`            INT            NOT NULL AUTO_INCREMENT,
     `entr_saida`    VARCHAR(1)     NOT NULL,
     `numero_nf`     VARCHAR(45)    NOT NULL,
     `data_mvto`     DATE           NOT NULL,
