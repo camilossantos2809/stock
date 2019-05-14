@@ -2,8 +2,9 @@
 require 'views/header.php';
 
 require 'models/conexao.php';
-$con = conexao();
-$stmt = $con->query("select * from cadfun");
+
+$con = new Conexao();
+$stmt = $con->getCon()->query("select * from produto");
 if (!$stmt) {
     echo "\nPDO::errorInfo():\n";
     print_r($con->errorInfo());
@@ -11,7 +12,7 @@ if (!$stmt) {
 $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo '<ul class="collection">';
 foreach ($res as $row) {
-    echo '<li class="collection-item">' . $row['nome'] . '</li>';
+    echo '<li class="collection-item">' . $row['descricao'] . '</li>';
 }
 echo '</ul>';
 
