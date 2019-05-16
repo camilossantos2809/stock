@@ -4,7 +4,12 @@ require '../controllers/ClienteController.php';
 
 $control = new ClienteController;
 $res = $control->getAll();
+
+if ($_GET && $_GET['delete']) {
+    $control->delete($_GET['delete']);
+}
 ?>
+    <h3>Listagem de Clientes</h3>
     <table class="striped highlight centered">
         <thead>
         <th>ID</th>
@@ -24,17 +29,18 @@ $res = $control->getAll();
             echo '<td>' . $row['cpf'] . '</td>';
             echo '<td>' . $row['rg'] . '</td>';
             echo '<td>' . $row['status'] . '</td>';
-            echo '<td><a href="#"><i class="material-icons">edit</i></a></td>';
-            echo '<td><a href="#"><i class="material-icons">delete</i></a></td>';
+            echo '<td><a href="clientes_form.php?update=' . $row['id'] . '"><i class="material-icons">edit</i></a></td>';
+            echo '<td><a href="" onclick="deleteById(' . $row['id'] . ')"><i class="material-icons">delete</i></a></td>';
             echo '</tr>';
         }
         ?>
         </tbody>
     </table>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large">
+        <a href="clientes_form.php" class="btn-floating btn-large">
             <i class="large material-icons">add</i>
         </a>
     </div>
+    <script src="js/clientes.js"></script>
 <?php
-require 'views/footer.php';
+require 'footer.php';
