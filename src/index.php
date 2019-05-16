@@ -6,10 +6,11 @@ require 'views/header.php';
             <div class="card teal hoverable">
                 <div class="card-content white-text">
                     <span class="card-title">Cadastro de Clientes</span>
+
                     <p>Acesso ao ambiente para gerenciamento do cadastro de clientes</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/clientes.php">
+                    <a href="views/clientes_form.php">
                         <i class="material-icons" title="Cadastrar Clientes">add</i>
                     </a>
                     <a href="views/clientes.php">
