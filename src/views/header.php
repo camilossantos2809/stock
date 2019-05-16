@@ -16,7 +16,7 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="/index.php">Home</a></li>
                 <li><a href="/src/views/produtos.php">Produtos</a></li>
-                <li><a href="/src/views/clientes.php">Clientes</a></li>
+                <li><a href="/src/views/clientes/clientes.php">Clientes</a></li>
                 <li><a href="/src/views/fornecedores.php">Fornecedores</a></li>
                 <li><a href="/src/views/usuarios.php">Usuários</a></li>
                 <li><a href="/src/views/movEstoques.php">Movimento Estoques</a></li>
@@ -28,7 +28,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a href="/index.php">Home</a></li>
         <li><a href="/src/views/produtos.php">Produtos</a></li>
-        <li><a href="/src/views/clientes.php">Clientes</a></li>
+        <li><a href="/src/views/clientes/clientes.php">Clientes</a></li>
         <li><a href="/src/views/fornecedores.php">Fornecedores</a></li>
         <li><a href="/src/views/usuarios.php">Usuários</a></li>
         <li><a href="/src/views/movEstoques.php">Movimento Estoques</a></li>

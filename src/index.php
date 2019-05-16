@@ -10,10 +10,10 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para gerenciamento do cadastro de clientes</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/clientes_form.php">
+                    <a href="views/clientes/clientes_form.php">
                         <i class="material-icons" title="Cadastrar Clientes">add</i>
                     </a>
-                    <a href="views/clientes.php">
+                    <a href="views/clientes/clientes.php">
                         <i class="material-icons" title="Listar Clientes">send</i>
                     </a>
                 </div>

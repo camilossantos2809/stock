@@ -1,7 +1,7 @@
 <?php
 
 
-require '../models/conexao.php';
+require __DIR__.'/../models/conexao.php';
 
 
 class ClienteController

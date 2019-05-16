@@ -1,6 +1,6 @@
 <?php
-require 'header.php';
-require '../controllers/ClienteController.php';
+require __DIR__.'/../header.php';
+require __DIR__.'/../../controllers/ClienteController.php';
 
 $control = new ClienteController;
 $res = $control->getAll();
@@ -41,6 +41,6 @@ if ($_GET && $_GET['delete']) {
             <i class="large material-icons">add</i>
         </a>
     </div>
-    <script src="js/clientes.js"></script>
+    <script src="../js/clientes.js"></script>
 <?php
-require 'footer.php';
+require __DIR__.'/../footer.php';

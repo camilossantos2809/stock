@@ -1,6 +1,6 @@
 <?php
-require 'header.php';
-require '../controllers/ClienteController.php';
+require __DIR__.'/../header.php';
+require __DIR__.'/../../controllers/ClienteController.php';
 $cont = new ClienteController();
 
 if ($_POST) {
@@ -60,4 +60,4 @@ if ($_GET['update']) {
         </form>
     </div>
 <?php
-require 'footer.php';
+require __DIR__.'/../footer.php';
