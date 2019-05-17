@@ -1,0 +1,1 @@
+const showMessage = message => M.toast({html: message})

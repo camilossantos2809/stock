@@ -2,4 +2,4 @@
 spl_autoload_register(function ($class_name) {
     include $class_name . '.php';
 });
-header("Location: src/index.php");
+header("Location: src/views/login.php");
