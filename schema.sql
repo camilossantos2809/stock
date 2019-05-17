@@ -317,3 +317,8 @@ CREATE INDEX `fk_mov_estoque_has_produto_mov_estoque1_idx` ON `mov_estoque_produ
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+
+insert into stock.usuario_grupo (id, descricao) values (1, 'Administrador'),(2,'Faturista');
+
+insert into usuario (login, nome, senha, usuario_grupo_id)
+VALUES ('admin', 'Administrador', 'admin', 1);
