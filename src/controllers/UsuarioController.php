@@ -13,7 +13,11 @@ class UsuarioController
 
     public function login($login, $senha)
     {
-        return $this->dao->getByLoginAndSenha($login, $senha);
+        $user = $this->dao->getByLoginAndSenha($login, $senha);
+        if ($user) {
+            setcookie('user', $user['nome'], (time() + (2 * 3600)), '/');
+        }
+        return $user;
     }
 
 }

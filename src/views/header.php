@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,16 +11,11 @@
 <body>
     <nav>
         <div class="nav-wrapper teal darken-4">
-            <a href="#!" class="brand-logo">Stock</a>
+            <a href="#" class="brand-logo">Stock</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/index.php">Home</a></li>
-                <li><a href="/src/views/produtos.php">Produtos</a></li>
-                <li><a href="/src/views/clientes/clientes.php">Clientes</a></li>
-                <li><a href="/src/views/fornecedores.php">Fornecedores</a></li>
-                <li><a href="/src/views/usuarios.php">Usuários</a></li>
-                <li><a href="/src/views/movEstoques.php">Movimento Estoques</a></li>
-                <li><a href="/src/views/relatorios.php">Relatórios</a></li>
+                <li><a href="/src/index.php"><i class="material-icons">home</i></a></li>
+                <li><a><i class="material-icons">people</i>Usuário</a></li>
             </ul>
         </div>
     </nav>

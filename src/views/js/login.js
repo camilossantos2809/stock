@@ -1,1 +1,1 @@
-const showMessage = message => M.toast({html: message})
+const showMessage = message => M.toast({html: message});

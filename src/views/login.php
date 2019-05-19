@@ -1,22 +1,12 @@
-<?php
-if ($_POST) {
-    require __DIR__ . '/../controllers/UsuarioController.php';
-    $control = new UsuarioController();
-    $user = $control->login($_POST['login'], $_POST['senha']);
-    if ($user){
-        header('Location: ../index.php');
-    } else {
-        echo "<script>alert('Ocorreu um erro de autenticação!')</script>";
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="pt">
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stock - Login</title>
     <style>
         .container {
@@ -37,6 +27,20 @@ if ($_POST) {
     </style>
 </head>
 <body>
+<?php
+if ($_POST) {
+    require __DIR__ . '/../controllers/UsuarioController.php';
+    $control = new UsuarioController();
+    $user = $control->login($_POST['login'], $_POST['senha']);
+    if ($user){
+        header('Location: ../index.php');
+    } else {
+        echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>';
+        echo '<script src="js/login.js"></script>';
+        echo '<script>showMessage("Ocorreu um erro de autenticação!")</script>';
+    }
+}
+?>
 <main class="container">
     <div class="child">
         <div class="row">
