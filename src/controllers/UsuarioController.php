@@ -1,14 +1,20 @@
 <?php
+require_once __DIR__ . '/Controller.php';
 require __DIR__ . '/../models/UsuarioDAO.php';
 
 
-class UsuarioController
+class UsuarioController extends Controller
 {
     private $dao;
 
     function __construct()
     {
         $this->dao = new UsuarioDAO();
+    }
+
+    public function getAll()
+    {
+        // TODO: Implement getAll() method.
     }
 
     public function login($login, $senha)

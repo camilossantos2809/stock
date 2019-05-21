@@ -1,37 +1,19 @@
 <?php
 
+require_once 'Dao.php';
 
-require __DIR__ . '/../models/conexao.php';
 
-
-class UsuarioDAO
+class UsuarioDAO extends Dao
 {
-    private $con;
-
-    function __construct()
-    {
-        $this->con = new Conexao();
-    }
 
     public function getAll()
     {
-        $stmt = $this->con->getCon()->query("select * from usuario");
-        if (!$stmt) {
-            echo "\nPDO::errorInfo():\n";
-            return array($this->con->errorInfo());
-        }
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return parent::getAll("select * from usuario");
     }
 
     public function getById($id)
     {
-        $stmt = $this->con->getCon()->prepare("select * from usuario where id=?");
-        if (!$stmt) {
-            echo "\nPDO::errorInfo():\n";
-            return array($this->con->errorInfo());
-        }
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return parent::getById("select * from usuario where id=?", $id);
     }
 
     public function getByLoginAndSenha($login, $senha)

@@ -32,7 +32,7 @@ if (!$_COOKIE['user']) {
 
 <ul class="sidenav" id="mobile-demo">
     <li><a href="/index.php">Home</a></li>
-    <li><a href="/src/views/produtos.php">Produtos</a></li>
+    <li><a href="/src/views/produtos/produtos.php">Produtos</a></li>
     <li><a href="/src/views/clientes/clientes.php">Clientes</a></li>
     <li><a href="/src/views/fornecedores.php">Fornecedores</a></li>
     <li><a href="/src/views/usuarios.php">Usuários</a></li>

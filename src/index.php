@@ -43,7 +43,7 @@ require 'views/header.php';
                     <a href="views/clientes.php">
                         <i class="material-icons" title="Cadastrar Produtos">add</i>
                     </a>
-                    <a href="views/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@ require 'views/header.php';
                     <a href="views/clientes.php">
                         <i class="material-icons" title="Cadastrar Usuários">add</i>
                     </a>
-                    <a href="views/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para registrar entrada ou saída de mercadorias</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ require 'views/header.php';
                     <p>Acesso as opções de visualização relatórios do sistema</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
                 </div>
             </div>
         </div>
