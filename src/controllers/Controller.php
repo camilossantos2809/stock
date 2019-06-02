@@ -9,6 +9,8 @@ abstract class Controller
 
     abstract function getById($id);
 
+    abstract function inativar($id);
+
     function showMessage($msg)
     {
         echo '<script src="../js/login.js"></script>';

@@ -28,4 +28,9 @@ class ProdutoController extends Controller
     {
         return $this->dao->getById($id);
     }
+
+    public function inativar($id)
+    {
+        return $this->dao->inativar($id);
+    }
 }

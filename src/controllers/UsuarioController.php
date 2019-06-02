@@ -37,4 +37,9 @@ class UsuarioController extends Controller
         // TODO: Implement getById() method.
     }
 
+    public function inativar($id)
+    {
+        // TODO: Implement inativar() method.
+    }
+
 }

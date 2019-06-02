@@ -40,9 +40,16 @@ abstract class Dao
 
     protected function inativar($obj, $id)
     {
-        $sql = "UPDATE " . $obj . " set status='C' where id=:id";
-        $stmt = $this->con->getCon()->prepare($sql);
-        $stmt->execute($id);
+        try{
+            $sql = "UPDATE " . $obj . " set status='C' where id=:id";
+            $stmt = $this->con->getCon()->prepare($sql);
+            $stmt->execute($id);
+            return true;
+        } catch (PDOException $err){
+            echo $err->getMessage();
+            throw $err;
+        }
+
     }
 
     protected function delete($id)

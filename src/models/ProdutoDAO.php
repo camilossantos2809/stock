@@ -24,4 +24,9 @@ class ProdutoDAO extends Dao
             return parent::save($sql, $produto);
         }
     }
+
+    public function inativar($id)
+    {
+        parent::inativar("produto", $id);
+    }
 }

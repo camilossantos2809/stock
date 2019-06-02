@@ -1,13 +1,14 @@
 <?php
-require __DIR__.'/../header.php';
-require __DIR__.'/../../controllers/ProdutoController.php';
+require __DIR__ . '/../header.php';
+require __DIR__ . '/../../controllers/ProdutoController.php';
 
 $control = new ProdutoController();
 $res = $control->getAll();
 
-//if ($_GET && $_GET['delete']) {
-//    $control->delete($_GET['delete']);
-//}
+if ($_GET && $_GET['delete']) {
+    $id = ['id' => $_GET['delete']];
+    $control->inativar($id);
+}
 ?>
     <h3>Listagem de Produtos</h3>
     <table class="striped highlight centered">
@@ -47,6 +48,6 @@ $res = $control->getAll();
             <i class="large material-icons">add</i>
         </a>
     </div>
-<!--    <script src="js/clientes.js"></script>-->
+    <script src="js/produtos.js"></script>
 <?php
-require __DIR__.'/../footer.php';
+require __DIR__ . '/../footer.php';
