@@ -14,6 +14,7 @@ if (!$_COOKIE['user']) {
 </head>
 
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <nav>
     <div class="nav-wrapper teal darken-4">
         <a href="#" class="brand-logo">Stock</a>
