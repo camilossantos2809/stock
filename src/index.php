@@ -26,10 +26,10 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para gerenciamento do cadastro de fornecedores</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/clientes.php">
+                    <a href="views/fornecedor/fornecedor_form.php">
                         <i class="material-icons" title="Cadastrar Fornecedores">add</i>
                     </a>
-                    <a href="views/fornecedores.php"><i class="material-icons">send</i></a>
+                    <a href="views/fornecedor/fornecedor.php"><i class="material-icons" title="Listar fornecedores">send</i></a>
                 </div>
             </div>
         </div>
