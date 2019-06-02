@@ -22,8 +22,14 @@ class UsuarioController extends Controller
         $user = $this->dao->getByLoginAndSenha($login, $senha);
         if ($user) {
             setcookie('user', $user['nome'], (time() + (2 * 3600)), '/');
+            setcookie('user_id', $user['id'], (time() + (2 * 3600)), '/');
         }
         return $user;
+    }
+
+    public function save($obj, $id)
+    {
+        // TODO: Implement save() method.
     }
 
 }
