@@ -10,7 +10,7 @@ abstract class Dao
         $this->con = new Conexao();
     }
 
-    public function getAll($query)
+    protected function getAll($query)
     {
         $stmt = $this->con->getCon()->query($query);
         if (!$stmt) {
@@ -20,7 +20,7 @@ abstract class Dao
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($query, $id)
+    protected function getById($query, $id)
     {
         $stmt = $this->con->getCon()->prepare($query);
         if (!$stmt) {
@@ -31,20 +31,21 @@ abstract class Dao
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function save($usuario, $id)
+    protected function save($sql, $obj)
     {
-        if ($id) {
-            $sql = "UPDATE usuario SET nome=:nome, login=:login, senha=:senha where id=:id";
-            $stmt = $this->con->getCon()->prepare($sql);
-            $stmt->execute($usuario + $id);
-        } else {
-            $sql = "INSERT INTO usuario (nome, login, senha) VALUES (:nome, :login, :senha)";
-            $stmt = $this->con->getCon()->prepare($sql);
-            $stmt->execute($usuario);
-        }
+        $stmt = $this->con->getCon()->prepare($sql);
+        $stmt->execute($obj);
+        return true;
     }
 
-    public function delete($id)
+    protected function inativar($obj, $id)
+    {
+        $sql = "UPDATE " . $obj . " set status='C' where id=:id";
+        $stmt = $this->con->getCon()->prepare($sql);
+        $stmt->execute($id);
+    }
+
+    protected function delete($id)
     {
         $sql = "DELETE FROM usuario where id=?";
         $stmt = $this->con->getCon()->prepare($sql);

@@ -32,4 +32,9 @@ class UsuarioController extends Controller
         // TODO: Implement save() method.
     }
 
+    public function getById($id)
+    {
+        // TODO: Implement getById() method.
+    }
+
 }

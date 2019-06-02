@@ -16,4 +16,16 @@ class ProdutoController extends Controller
     {
         return $this->dao->getAll();
     }
+
+    public function save($obj, $id)
+    {
+        $this->dao->save($obj, $id);
+        $this->showMessage("Produto gravado!");
+        header('Location: /src/views/produtos/produtos.php');
+    }
+
+    public function getById($id)
+    {
+        return $this->dao->getById($id);
+    }
 }

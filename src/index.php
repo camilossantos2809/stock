@@ -40,10 +40,10 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para gerenciamento do cadastro de produtos</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/clientes.php">
+                    <a href="views/produtos/produtos_form.php">
                         <i class="material-icons" title="Cadastrar Produtos">add</i>
                     </a>
-                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/produtos/produtos.php"><i class="material-icons" title="Listar produtos">send</i></a>
                 </div>
             </div>
         </div>
