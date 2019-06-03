@@ -54,10 +54,10 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para gerenciamento do cadastro de usuários</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/clientes.php">
+                    <a href="views/usuario/usuario_form">
                         <i class="material-icons" title="Cadastrar Usuários">add</i>
                     </a>
-                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/usuario/usuario.php"><i class="material-icons" title="listar usuários">send</i></a>
                 </div>
             </div>
         </div>

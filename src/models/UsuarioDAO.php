@@ -40,20 +40,15 @@ class UsuarioDAO extends Dao
     {
         if ($id) {
             $sql = "UPDATE usuario SET nome=:nome, login=:login, senha=:senha where id=:id";
-            $stmt = $this->con->getCon()->prepare($sql);
-            $stmt->execute($usuario + $id);
+            return parent::save($sql, $usuario + $id);
         } else {
             $sql = "INSERT INTO usuario (nome, login, senha) VALUES (:nome, :login, :senha)";
-            $stmt = $this->con->getCon()->prepare($sql);
-            $stmt->execute($usuario);
+            return parent::save($sql, $usuario);
         }
     }
 
-    public function delete($id)
+    public function inativar($id)
     {
-        $sql = "DELETE FROM usuario where id=?";
-        $stmt = $this->con->getCon()->prepare($sql);
-        $stmt->execute([$id]);
+        parent::inativar("usuario", $id);
     }
-
 }

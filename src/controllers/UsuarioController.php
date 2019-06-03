@@ -14,7 +14,7 @@ class UsuarioController extends Controller
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+        return $this->dao->getAll();
     }
 
     public function login($login, $senha)
@@ -29,17 +29,19 @@ class UsuarioController extends Controller
 
     public function save($obj, $id)
     {
-        // TODO: Implement save() method.
+        $this->dao->save($obj, $id);
+        $this->showMessage("Usuário gravado!");
+        header('Location: /src/views/usuario/usuario.php');
     }
 
     public function getById($id)
     {
-        // TODO: Implement getById() method.
+        return $this->dao->getById($id);
     }
 
     public function inativar($id)
     {
-        // TODO: Implement inativar() method.
+        return $this->dao->inativar($id);
     }
 
 }
