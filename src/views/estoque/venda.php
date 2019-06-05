@@ -3,13 +3,11 @@ require __DIR__ . '/../../controllers/VendaController.php';
 $cont = new VendaController();
 
 if ($_POST) {
-//    $cont->save(json_encode($_POST['data']));
-    $vendaDecoded =json_decode($_POST['cabecalho'], true);
-    $prodsDecoded =json_decode($_POST['produtos'], true);
-//    $decoded = json_decode($_POST['produtos'], true);
+    $vendaDecoded = json_decode($_POST['cabecalho'], true);
+    $prodsDecoded = json_decode($_POST['produtos'], true);
 //    error_log($decoded['valor_total'], 4);
     $cont->save($vendaDecoded, $prodsDecoded);
-return $_POST;
+    return $_POST;
 }
 ?>
 
@@ -19,7 +17,7 @@ require __DIR__ . '/../header.php';
     <div class="row">
         <form class="col s12" method="post" action="venda.php">
             <h3>Registrar venda</h3>
-            <input hidden id="entr_saida" name="entr_saida" value="E">
+            <input hidden id="entr_saida" name="entr_saida" value="S">
             <input hidden id="id" name="id">
             <div class="row">
                 <div class="card col s12">
@@ -40,14 +38,14 @@ require __DIR__ . '/../header.php';
                             <input id="data_mvto" name="data_mvto" type="date" class="validate" required>
                             <label for="data_mvto">Data Movimento</label>
                             <span class="helper-text"
-                                  data-error="por favor, verifique o conteúdo desse campo">Data em que a mercadoria foi recebida</span>
+                                  data-error="por favor, verifique o conteúdo desse campo">Data em que a mercadoria foi vendida</span>
                         </div>
                         <div class="input-field col s12 m3">
                             <input id="valor_total" name="valor_total" type="number" min="0" step="0.1" class="validate"
                                    required>
-                            <label for="valor_total">Total NF</label>
+                            <label for="valor_total">Total Venda</label>
                             <span class="helper-text"
-                                  data-error="por favor, verifique o conteúdo desse campo">Valor total da NFe</span>
+                                  data-error="por favor, verifique o conteúdo desse campo">Valor total da Venda</span>
                         </div>
                     </div>
                 </div>
