@@ -7,16 +7,22 @@ const addProdLancamento = () => {
     const tr = document.createElement('tr')
     tr.innerHTML = newLine
     tableBody.appendChild(tr)
+    inputProduto.value = ""
+    inputQtde.value = ""
+    inputValor.value = ""
+    inputProduto.focus()
 }
 
 const getCabecalho = () => {
     const inputCliente = document.querySelector("#cliente")
     const inputNf = document.querySelector("#numero_nf")
     const inputData = document.querySelector("#data_mvto")
+    const inputValor = document.querySelector("#valor_total")
     return {
-        cliente: inputCliente.value,
-        nf: inputNf.value,
-        data: inputData.value
+        cliente_id: inputCliente.value,
+        numero_nf: inputNf.value,
+        data_mvto: inputData.value,
+        valor_total: inputValor.value
     }
 }
 
@@ -26,26 +32,46 @@ const getProdutos = () => {
     return rows.map(row => {
         let arr = Array.from(row.children)
         return {
-            id: arr[0].textContent,
-            qtde: arr[1].textContent,
-            valor: arr[2].textContent
+            produto_id: arr[0].textContent,
+            qtde_unitaria: arr[1].textContent,
+            valor_total: arr[2].textContent
         }
     })
 }
 
-const sendVenda = () => {
+const clearAll = () => {
+    const inputCliente = document.querySelector("#cliente")
+    const inputNf = document.querySelector("#numero_nf")
+    const inputValor = document.querySelector("#valor_total")
+    const tableBody = document.querySelectorAll("table>tbody tr")
+    for(let tr of tableBody) {
+        tr.remove()
+    }
+    inputCliente.value = ""
+    inputNf.value=""
+    inputValor.value = ""
+}
+
+const sendVenda = (usuario_id) => {
     const cabecalho = getCabecalho()
     const produtos = getProdutos()
-    const data = {
-        cabecalho: cabecalho,
-        produtos: produtos
-    }
-    console.log(JSON.stringify(data))
+
+    cabecalho.usuario_id = usuario_id
+
+    let urlParams = new URLSearchParams()
+    urlParams.append('cabecalho', JSON.stringify(cabecalho))
+    urlParams.append('produtos', JSON.stringify(produtos))
+
+    let headers = new Headers()
+    headers.append("Content-Type", "application/x-www-form-urlencoded")
+
     fetch('venda.php', {
-        method: 'post',
-        body: JSON.stringify(data)
+        method: 'POST',
+        body: urlParams.toString(),
+        headers: headers
     }).then(response => console.log(response))
-        .then(data => console.log(data))
+        .then(data => clearAll())
+        .catch(err=>console.error(err))
 }
 
 document.addEventListener('DOMContentLoaded', function () {

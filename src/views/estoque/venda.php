@@ -1,11 +1,20 @@
 <?php
-require __DIR__ . '/../header.php';
-require __DIR__ . '/../../controllers/FornecedorController.php';
-$cont = new FornecedorController();
+require __DIR__ . '/../../controllers/VendaController.php';
+$cont = new VendaController();
 
 if ($_POST) {
-    echo var_dump($_POST);
+//    $cont->save(json_encode($_POST['data']));
+    $vendaDecoded =json_decode($_POST['cabecalho'], true);
+    $prodsDecoded =json_decode($_POST['produtos'], true);
+//    $decoded = json_decode($_POST['produtos'], true);
+//    error_log($decoded['valor_total'], 4);
+    $cont->save($vendaDecoded, $prodsDecoded);
+return $_POST;
 }
+?>
+
+<?php
+require __DIR__ . '/../header.php';
 ?>
     <div class="row">
         <form class="col s12" method="post" action="venda.php">
@@ -91,7 +100,7 @@ if ($_POST) {
                 </div>
             </div>
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large" onclick="sendVenda()">
+                <a class="btn-floating btn-large" onclick="sendVenda(<?php echo $_COOKIE['user_id'] ?>)">
                     <i class="large material-icons">save</i>
                 </a>
             </div>
