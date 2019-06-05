@@ -68,7 +68,8 @@ require 'views/header.php';
                     <p>Acesso ao ambiente para registrar entrada ou saída de mercadorias</p>
                 </div>
                 <div class="card-action right-align">
-                    <a href="views/produtos/produtos.php"><i class="material-icons">send</i></a>
+                    <a href="views/estoque/venda.php"><i class="material-icons" title="Registrar venda">shopping_cart</i></a>
+                    <a href="views/estoque/compra.php"><i class="material-icons" title="Registrar compra">store</i></a>
                 </div>
             </div>
         </div>
